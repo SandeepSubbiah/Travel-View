@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.project136.Adapters.CategoryAdapter;
 import com.example.project136.Adapters.PupolarAdapter;
+import com.example.project136.Common.Common;
 import com.example.project136.Domains.CategoryDomain;
 import com.example.project136.Domains.PopularDomain;
 import com.example.project136.R;
@@ -31,9 +33,18 @@ public class MainActivity extends AppCompatActivity {
 
         initRecyclerView();
 
-        //start the Login Activity
-        LinearLayout settingBtn = findViewById(R.id.landingSetting);
-        settingBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
+        //Start the Login Activity
+        LoginActivity();
+    }
+
+    private void LoginActivity(){
+        Log.e("Is Logged-In: ", String.valueOf(Common.isLoggedIn));
+        if(!Common.isLoggedIn) {
+            LinearLayout settingBtn = findViewById(R.id.landingSetting);
+            settingBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
+        }else{
+            Toast.makeText(MainActivity.this, "You Are Already Logged In!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void initRecyclerView() {
