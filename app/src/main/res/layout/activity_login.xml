@@ -65,15 +65,16 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
-        android:layout_margin="32dp"
         style="@android:style/Widget.Button"
-        android:background="@drawable/button_background"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/button_background"
         android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />

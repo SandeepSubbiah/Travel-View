@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
         initRecyclerView();
 
-        //Start the Login Activity
-        LoginActivity();
+        LinearLayout settingBtn = findViewById(R.id.landingSetting);
+        settingBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SettingActivity.class)));
+
     }
 
     private void LoginActivity(){

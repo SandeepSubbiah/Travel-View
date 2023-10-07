@@ -1,9 +1,12 @@
 package com.example.project136.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -22,6 +25,10 @@ public class DetailActivity extends AppCompatActivity {
 
         initView();
         setVariable();
+
+        AppCompatButton settingBtn = findViewById(R.id.button);
+        settingBtn.setOnClickListener(v -> startActivity(new Intent(DetailActivity.this, PaymentActivity.class)));
+
     }
 
     private void setVariable() {
@@ -50,7 +57,6 @@ public class DetailActivity extends AppCompatActivity {
                 .into(picImg);
 
         backBtn.setOnClickListener(v -> finish());
-
 
     }
 

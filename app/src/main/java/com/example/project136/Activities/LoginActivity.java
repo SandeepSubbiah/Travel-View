@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
     private Button buttonLogin;
     private FirebaseAuth mAuth;
+    private TextView buttonSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,10 @@ public class LoginActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextTextPersonName);
         editTextPassword = findViewById(R.id.editTextTextPersonName2);
         buttonLogin = findViewById(R.id.button);
+        buttonSignup = findViewById(R.id.textView2);
 
         mAuth = FirebaseAuth.getInstance();
-
+        Common.mAuthentic = mAuth;
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,14 +53,23 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-                                    ConstraintLayout introBtn = findViewById(R.id.button);
-                                    introBtn.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, IntroActivity.class)));
+//                                    ConstraintLayout introBtn = findViewById(R.id.button);
+//                                    introBtn.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, IntroActivity.class)));
+                                    startActivity(new Intent(LoginActivity.this, IntroActivity.class));
+                                    finish();
                                 } else {
                                     // Login failed, display an error message.
                                     Toast.makeText(LoginActivity.this, "Login failed. Check your credentials.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
+            }
+        });
+
+        buttonSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
 
